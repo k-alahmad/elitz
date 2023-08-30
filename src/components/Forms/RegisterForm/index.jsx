@@ -86,7 +86,6 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData(form.current);
-    console.log(listRegister);
 
     try {
       let sameEmail = listRegister.find((element) => {
@@ -96,11 +95,16 @@ const RegisterForm = () => {
         return element.phone == form.current.phone.value;
       });
       if (!sameEmail && !samePhone) {
-        const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
-          method: "POST",
-          body: formData,
-          "Content-Type": "multipart/form-data",
-        });
+        const response = await fetch(
+          import.meta.env.PROD
+            ? process.env.VITE_ZAPPIER_URL
+            : import.meta.env.VITE_ZAPPIER_URL,
+          {
+            method: "POST",
+            body: formData,
+            "Content-Type": "multipart/form-data",
+          }
+        );
         const result = response.json();
         console.log("Success:", result);
         sendEmail(e);
