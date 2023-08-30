@@ -86,7 +86,6 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData(form.current);
-    console.log("process", process.env.VITE_ZAPPIER_URL);
     console.log("import.meta", import.meta.env.VITE_ZAPPIER_URL);
     try {
       let sameEmail = listRegister.find((element) => {
@@ -97,9 +96,7 @@ const RegisterForm = () => {
       });
       if (!sameEmail && !samePhone) {
         const response = await fetch(
-          import.meta.env.PROD
-            ? process.env.VITE_ZAPPIER_URL
-            : import.meta.env.VITE_ZAPPIER_URL,
+          JSON.stringify(import.meta.env.VITE_ZAPPIER_URL),
           {
             method: "POST",
             body: formData,
