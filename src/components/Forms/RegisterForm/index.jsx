@@ -205,11 +205,7 @@ const RegisterForm = () => {
       />
       <button
         className={`${"bg-primary"} text-white text-small w-full py-4 disabled:bg-fourth/60`}
-        disabled={
-          email.replace(/ /g, "") == "" ||
-          fullName.replace(/ /g, "") == "" ||
-          phone.length < 12
-        }
+        disabled={emailError || fullName.replace(/ /g, "") == "" || phoneError}
       >
         {t("register")}
       </button>
