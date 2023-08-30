@@ -95,14 +95,11 @@ const RegisterForm = () => {
         return element.phone == form.current.phone.value;
       });
       if (!sameEmail && !samePhone) {
-        const response = await fetch(
-          JSON.stringify(import.meta.env.VITE_ZAPPIER_URL),
-          {
-            method: "POST",
-            body: formData,
-            "Content-Type": "multipart/form-data",
-          }
-        );
+        const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
+          method: "POST",
+          body: formData,
+          "Content-Type": "multipart/form-data",
+        });
         const result = response.json();
         console.log("Success:", result);
         sendEmail(e);
