@@ -171,7 +171,7 @@ const RegisterForm = () => {
         type="text"
         className="hidden"
         name={"project"}
-        value="Dubai South Project"
+        value="Elitz 3 Project"
         readOnly
       />
       <PhoneInput
