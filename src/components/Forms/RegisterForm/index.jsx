@@ -86,7 +86,8 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData(form.current);
-
+    console.log(process.env.VITE_ZAPPIER_URL);
+    console.log(import.meta.env.VITE_ZAPPIER_URL);
     try {
       let sameEmail = listRegister.find((element) => {
         return element.email == form.current.email.value;
